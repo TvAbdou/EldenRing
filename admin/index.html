@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Administration — Parcours des Boss</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+<header class="admin-header">
+  <div>
+    <span class="admin-eyebrow">Elden Ring — Parcours des Boss</span>
+    <h1>Administration</h1>
+  </div>
+  <a class="back-link" href="../index.html">&larr; Retour au site</a>
+</header>
+
+<p class="admin-note" id="statusNote"></p>
+
+<section class="toolbar">
+  <button type="button" id="exportBtn" class="tbtn">Exporter bosses.json</button>
+  <button type="button" id="importBtn" class="tbtn">Importer bosses.json</button>
+  <input type="file" id="importFileInput" accept="application/json" hidden>
+  <button type="button" id="resetBtn" class="tbtn tbtn-danger">R&eacute;initialiser les modifications locales</button>
+</section>
+
+<p class="admin-hint">
+  Les modifications sont enregistr&eacute;es dans ce navigateur (stockage local). Pour les rendre d&eacute;finitives sur le site publi&eacute;
+  (visibles par tous les visiteurs), cliquez sur <b>« Exporter bosses.json »</b> puis remplacez le fichier <code>data/bosses.json</code>
+  de votre projet par celui t&eacute;l&eacute;charg&eacute;, avant de red&eacute;ployer.
+</p>
+
+<main id="listView" class="list-view">
+  <table class="boss-table" id="bossTable">
+    <thead>
+      <tr><th>#</th><th>Nom</th><th>Chapitre</th><th>Zone</th><th></th></tr>
+    </thead>
+    <tbody id="bossTableBody"></tbody>
+  </table>
+</main>
+
+<main id="editView" class="edit-view" hidden>
+  <button type="button" class="back-link back-to-list" id="backToListBtn">&larr; Retour &agrave; la liste</button>
+
+  <form id="editForm" class="edit-form">
+    <div class="form-grid">
+
+      <div class="field field-span2">
+        <label for="f_name">Nom du boss</label>
+        <input type="text" id="f_name" required>
+      </div>
+
+      <div class="field">
+        <label for="f_number">Num&eacute;ro (ordre dans le parcours)</label>
+        <input type="number" id="f_number" min="1" max="50" required>
+      </div>
+
+      <div class="field">
+        <label for="f_chapter">Chapitre</label>
+        <select id="f_chapter"></select>
+      </div>
+
+      <div class="field">
+        <label for="f_zone">Zone</label>
+        <input type="text" id="f_zone">
+      </div>
+
+      <div class="field">
+        <label for="f_difficulty">Difficult&eacute; (1 &agrave; 5)</label>
+        <input type="number" id="f_difficulty" min="1" max="5">
+      </div>
+
+      <div class="field field-span2">
+        <label>Image</label>
+        <div class="image-editor">
+          <div class="image-preview"><img id="editImagePreview" alt="Aper&ccedil;u"></div>
+          <div class="image-controls">
+            <button type="button" id="changeImageBtn" class="tbtn">Changer l'image</button>
+            <input type="file" id="imageFileInput" accept="image/*" hidden>
+            <label for="f_imagePath" class="small-label">ou chemin / URL de l'image</label>
+            <input type="text" id="f_imagePath" placeholder="images/bosses/exemple.jpg">
+            <p class="micro-hint">Pour un rendu d&eacute;finitif l&eacute;ger, pr&eacute;f&eacute;rez ajouter le fichier dans <code>images/bosses/</code> et indiquer son chemin plut&ocirc;t que de t&eacute;l&eacute;verser (le stockage local du navigateur est limit&eacute; en taille).</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="field field-span2">
+        <label for="f_description">Description</label>
+        <textarea id="f_description" rows="5"></textarea>
+      </div>
+
+      <div class="field">
+        <label for="f_hp">Point de vie</label>
+        <input type="text" id="f_hp">
+      </div>
+      <div class="field">
+        <label for="f_defense">D&eacute;fense</label>
+        <input type="text" id="f_defense">
+      </div>
+      <div class="field">
+        <label for="f_weakness">Faiblesse</label>
+        <input type="text" id="f_weakness">
+      </div>
+      <div class="field">
+        <label for="f_resistances">R&eacute;sistances</label>
+        <input type="text" id="f_resistances">
+      </div>
+      <div class="field field-span2">
+        <label for="f_rewards">R&eacute;compenses</label>
+        <input type="text" id="f_rewards">
+      </div>
+      <div class="field field-span2">
+        <label for="f_extra">Informations suppl&eacute;mentaires</label>
+        <textarea id="f_extra" rows="3"></textarea>
+      </div>
+
+    </div>
+
+    <div class="form-actions">
+      <span class="save-feedback" id="saveFeedback"></span>
+      <button type="submit" class="tbtn tbtn-primary">Enregistrer</button>
+    </div>
+  </form>
+</main>
+
+<script src="admin.js"></script>
+</body>
+</html>
