@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parcours des Boss — Elden Ring</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Cinzel+Decorative:wght@700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="atmosphere" aria-hidden="true">
+  <div class="grain"></div>
+  <div class="vignette"></div>
+  <div class="fog fog-a"></div>
+  <div class="fog fog-b"></div>
+  <div class="ember-field" id="emberField"></div>
+</div>
+
+<header class="site-header">
+  <span class="site-eyebrow">Elden Ring</span>
+  <h1 class="site-title">Parcours des Boss</h1>
+  <div class="header-rule" aria-hidden="true"><span></span><i>&#10022;</i><span></span></div>
+</header>
+
+<main class="stage" id="stage">
+
+  <section class="codex" id="codex" aria-live="polite">
+    <div class="codex-frame">
+      <span class="corner corner-tl" aria-hidden="true"></span>
+      <span class="corner corner-tr" aria-hidden="true"></span>
+      <span class="corner corner-bl" aria-hidden="true"></span>
+      <span class="corner corner-br" aria-hidden="true"></span>
+
+      <div class="codex-inner" id="codexInner">
+
+        <div class="boss-topline">
+          <span class="chapter-tag" id="chapterTag">Chapitre I — N&eacute;crolimbe</span>
+          <span class="boss-number"><em>Boss</em> <b id="bossNumber">01</b><i>/50</i></span>
+        </div>
+
+        <h2 class="boss-name" id="bossName">&mdash;</h2>
+
+        <div class="boss-portrait">
+          <div class="portrait-frame">
+            <img id="bossImage" src="images/bosses/placeholder.svg" alt="">
+            <div class="portrait-sheen" aria-hidden="true"></div>
+          </div>
+        </div>
+
+        <div class="boss-substats">
+          <div class="substat">
+            <span class="substat-label">Zone</span>
+            <span class="substat-value" id="bossZone">&mdash;</span>
+          </div>
+          <div class="substat substat-difficulty">
+            <span class="substat-label">Difficult&eacute;</span>
+            <span class="stars" id="bossDifficulty" aria-label="Difficult&eacute;"></span>
+          </div>
+        </div>
+
+        <p class="boss-description" id="bossDescription">&nbsp;</p>
+
+        <div class="ornament-divider" aria-hidden="true"><span></span><i>&#10022;</i><span></span></div>
+
+        <div class="stat-grid">
+          <div class="stat-block">
+            <svg class="stat-icon" viewBox="0 0 24 24"><path d="M12 21s-7.5-4.7-10.2-9.4C.2 8.6 1.4 5 5 4.2c2.2-.5 4.2.6 5.5 2.4C11.8 4.8 13.8 3.7 16 4.2c3.6.8 4.8 4.4 3.2 7.4C16.5 16.3 12 21 12 21z"/></svg>
+            <span class="stat-label">Point de Vie</span>
+            <span class="stat-value" id="statHp">&mdash;</span>
+          </div>
+          <div class="stat-block">
+            <svg class="stat-icon" viewBox="0 0 24 24"><path d="M12 2 4 5v6c0 5 3.4 8.9 8 11 4.6-2.1 8-6 8-11V5l-8-3z"/></svg>
+            <span class="stat-label">D&eacute;fense</span>
+            <span class="stat-value" id="statDef">&mdash;</span>
+          </div>
+          <div class="stat-block">
+            <svg class="stat-icon" viewBox="0 0 24 24"><path d="m12 2 2.6 6.2L21 9l-5 4.5L17.5 21 12 17.3 6.5 21 8 13.5 3 9l6.4-.8z"/></svg>
+            <span class="stat-label">Point Faible</span>
+            <span class="stat-value" id="statWeak">&mdash;</span>
+          </div>
+        </div>
+
+        <div class="stat-line">
+          <span><span class="stat-line-label">R&eacute;sistances</span><span id="statResist">&mdash;</span></span>
+          <span><span class="stat-line-label">R&eacute;compenses</span><span id="statRewards">&mdash;</span></span>
+        </div>
+
+      </div>
+    </div>
+
+    <nav class="boss-nav" aria-label="Navigation entre les boss">
+      <button type="button" class="nav-btn nav-prev" id="prevBtn">
+        <span class="nav-arrow">&larr;</span><span class="nav-label">Boss pr&eacute;c&eacute;dent</span>
+      </button>
+
+      <div class="progress-wrap">
+        <span class="progress-text" id="progressText">BOSS 01 / 50</span>
+        <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+      </div>
+
+      <button type="button" class="nav-btn nav-next" id="nextBtn">
+        <span class="nav-label">Boss suivant</span><span class="nav-arrow">&rarr;</span>
+      </button>
+    </nav>
+  </section>
+
+</main>
+
+<a class="admin-link" href="admin/index.html">Administration</a>
+
+<div class="chapter-veil" id="chapterVeil" aria-hidden="true">
+  <div class="chapter-veil-inner">
+    <span class="cv-eyebrow" id="cvEyebrow">Chapitre II</span>
+    <h2 class="cv-title" id="cvTitle">Liurnia</h2>
+    <span class="cv-sub" id="cvSub">Des Lacs</span>
+    <div class="cv-rule"><span></span><i>&#10022;</i><span></span></div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
