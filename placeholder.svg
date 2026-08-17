@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#14110c"/>
+      <stop offset="55%" stop-color="#1c1810"/>
+      <stop offset="100%" stop-color="#0c0a07"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="46%" r="42%">
+      <stop offset="0%" stop-color="#c9a24b" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#c9a24b" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="mist" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8a7a58" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#8a7a58" stop-opacity="0.14"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="560" fill="url(#sky)"/>
+  <rect width="900" height="560" fill="url(#glow)"/>
+  <!-- distant peaks -->
+  <path d="M0,420 L120,300 L210,380 L320,260 L430,360 L520,270 L640,390 L740,300 L900,410 L900,560 L0,560 Z" fill="#100d09" opacity="0.9"/>
+  <path d="M0,470 L150,380 L260,440 L400,340 L560,450 L700,370 L900,460 L900,560 L0,560 Z" fill="#0a0806"/>
+  <rect y="380" width="900" height="180" fill="url(#mist)"/>
+  <!-- ornamental sigil -->
+  <g transform="translate(450,250)" stroke="#c9a24b" stroke-width="1.4" fill="none" opacity="0.55">
+    <circle r="58"/>
+    <circle r="42"/>
+    <path d="M0,-58 L0,-88 M0,58 L0,88 M-58,0 L-88,0 M58,0 L88,0"/>
+    <path d="M-30,-30 L30,30 M30,-30 L-30,30" opacity="0.4"/>
+  </g>
+  <text x="450" y="258" text-anchor="middle" font-family="Georgia, serif" font-size="15" letter-spacing="4" fill="#c9a24b" opacity="0.7">?</text>
+  <text x="450" y="470" text-anchor="middle" font-family="Georgia, serif" font-size="15" letter-spacing="6" fill="#a4926a" opacity="0.55">IMAGE NON RENSEIGN&#201;E</text>
+</svg>
