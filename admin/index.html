@@ -16,26 +16,36 @@
     <span class="admin-eyebrow">Elden Ring — Parcours des Boss</span>
     <h1>Administration</h1>
   </div>
-  <a class="back-link" href="../index.html">&larr; Retour au site</a>
+  <a class="back-link" href="../index.html" id="backToSiteBtn">&larr; Retour au site</a>
 </header>
 
 <p class="admin-note" id="statusNote"></p>
 
 <section class="toolbar">
-  <button type="button" id="exportBtn" class="tbtn">Exporter bosses.json</button>
-  <button type="button" id="importBtn" class="tbtn">Importer bosses.json</button>
+  <button type="button" id="exportBtn" class="tbtn tbtn-primary">Exporter bosses.json</button>
+  <button type="button" id="importBtn" class="tbtn">Importer</button>
   <input type="file" id="importFileInput" accept="application/json" hidden>
-  <button type="button" id="resetBtn" class="tbtn tbtn-danger">Réinitialiser les modifications locales</button>
+  <button type="button" id="resetBtn" class="tbtn tbtn-danger">Réinitialiser tout</button>
 </section>
 
 <p class="admin-hint">
-  Les modifications sont enregistrées dans ce navigateur (stockage local). Pour les rendre définitives sur le site publié
-  (visibles par tous les visiteurs), cliquez sur <b>« Exporter bosses.json »</b> puis remplacez le fichier <code>data/bosses.json</code>
-  de votre projet par celui téléchargé, avant de redéployer.
+  Les modifications sont enregistrées dans ce navigateur. Pour les rendre définitives, cliquez sur <b>« Exporter bosses.json »</b> et remplacez le fichier <code>data/bosses.json</code> de votre projet.
 </p>
 
 <main id="listView" class="list-view">
-  <!-- Ajout d'un conteneur pour rendre le tableau scrollable sur mobile -->
+  <!-- Barre de filtres et recherche -->
+  <div class="filters-bar">
+    <input type="text" id="searchInput" placeholder="Rechercher par nom ou zone...">
+    <select id="filterChapter">
+      <option value="all">Tous les chapitres</option>
+    </select>
+    <select id="filterStatus">
+      <option value="all">Tous les statuts</option>
+      <option value="edited">Modifiés uniquement</option>
+    </select>
+    <button type="button" id="addBossBtn" class="tbtn tbtn-primary">+ Nouveau Boss</button>
+  </div>
+
   <div class="table-responsive">
     <table class="boss-table" id="bossTable">
       <thead>
@@ -58,8 +68,8 @@
       </div>
 
       <div class="field">
-        <label for="f_number">Numéro (ordre dans le parcours)</label>
-        <input type="number" id="f_number" min="1" max="50" required>
+        <label for="f_number">Numéro (ordre)</label>
+        <input type="number" id="f_number" min="1" max="999" required>
       </div>
 
       <div class="field">
@@ -73,28 +83,30 @@
       </div>
 
       <div class="field">
-        <label for="f_difficulty">Difficulté (1 à 5)</label>
+        <label for="f_difficulty" title="De 1 (très facile) à 5 (cauchemardesque)">Difficulté (1 à 5)</label>
         <input type="number" id="f_difficulty" min="1" max="5">
       </div>
 
       <div class="field field-span2">
-        <label>Image</label>
-        <div class="image-editor">
+        <label>Image (Glissez-déposez ici)</label>
+        <div class="image-editor" id="dropZone">
           <div class="image-preview"><img id="editImagePreview" alt="Aperçu"></div>
           <div class="image-controls">
-            <button type="button" id="changeImageBtn" class="tbtn">Changer l'image</button>
-            <!-- L'attribut accept prend maintenant explicitement en charge tous les types d'images -->
+            <div style="display:flex; gap:10px; flex-wrap:wrap;">
+              <button type="button" id="changeImageBtn" class="tbtn">Changer</button>
+              <button type="button" id="removeImageBtn" class="tbtn tbtn-danger">Retirer</button>
+            </div>
             <input type="file" id="imageFileInput" accept="image/*, .png, .jpg, .jpeg, .gif, .webp, .svg" hidden>
             <label for="f_imagePath" class="small-label">ou chemin / URL de l'image</label>
             <input type="text" id="f_imagePath" placeholder="images/bosses/exemple.jpg">
-            <p class="micro-hint">Pour un rendu définitif léger, préférez ajouter le fichier dans <code>images/bosses/</code> et indiquer son chemin plutôt que de téléverser (le stockage local du navigateur est limité en taille).</p>
+            <p class="micro-hint" id="imageWarning" style="color: #c98a6b; display:none;">Attention : l'image dépasse 1 Mo. Préférez un lien direct ou compressez-la.</p>
           </div>
         </div>
       </div>
 
       <div class="field field-span2">
         <label for="f_description">Description</label>
-        <textarea id="f_description" rows="5"></textarea>
+        <textarea id="f_description" rows="4"></textarea>
       </div>
 
       <div class="field">
@@ -125,6 +137,9 @@
     </div>
 
     <div class="form-actions">
+      <!-- Bouton de suppression aligné à gauche -->
+      <button type="button" id="deleteBossBtn" class="tbtn tbtn-danger" style="margin-right: auto;">Supprimer ce boss</button>
+      
       <span class="save-feedback" id="saveFeedback"></span>
       <button type="submit" class="tbtn tbtn-primary">Enregistrer</button>
     </div>
