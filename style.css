@@ -159,7 +159,7 @@ body{
   box-shadow: 0 30px 70px -20px var(--c-shadow), 0 0 0 1px rgba(0,0,0,.4) inset;
   padding: 8px;
 }
-.codex-frame::before{
+.codex-frame::before{ /* subtle stone texture */
   content:""; position:absolute; inset:0;
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='90' height='90'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/></svg>");
   pointer-events:none;
@@ -334,7 +334,7 @@ body{
 }
 
 /* ================================================================
-   TRANSITIONS between bosses
+   TRANSITIONS between bosses (JS toggles these on #codexInner)
 ================================================================ */
 .codex-inner.is-leaving{
   animation: leaveOut .38s ease forwards;
@@ -386,7 +386,7 @@ body{
 }
 
 /* ================================================================
-   ADMIN LINK
+   ADMIN LINK (discreet)
 ================================================================ */
 .admin-link{
   position:fixed; right:16px; bottom:14px; z-index:5;
@@ -399,7 +399,7 @@ body{
 .admin-link:hover{ opacity:.85; border-color: var(--c-gold-dim); }
 
 /* ================================================================
-   CHAPTER VEIL
+   CHAPTER VEIL (full-screen transition)
 ================================================================ */
 .chapter-veil{
   position:fixed; inset:0; z-index:20;
@@ -435,142 +435,6 @@ body{
 .cv-rule span{ height:1px; width:70px; background: linear-gradient(90deg, transparent, var(--c-gold-dim)); }
 .cv-rule span:last-child{ background: linear-gradient(270deg, transparent, var(--c-gold-dim)); }
 .cv-rule i{ font-style:normal; font-size:12px; color: var(--c-gold); }
-
-
-/* ================================================================
-   OVERRIDE: DESIGN IDENTIQUE AU SCREENSHOT
-================================================================ */
-
-.codex-inner.screen-accurate {
-  background: #0d0c0a; 
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  padding: 30px 40px 40px;
-}
-
-/* Le Titre */
-.screen-accurate .boss-name {
-  font-family: var(--f-display);
-  font-size: 28px;
-  font-weight: 400;
-  letter-spacing: 0.02em;
-  color: #e5dac3;
-  text-shadow: none;
-  margin-bottom: 16px;
-}
-
-/* L'Image */
-.screen-accurate .portrait-frame {
-  border: 1px solid #000;
-  outline: none;
-  box-shadow: none;
-  background: #000;
-  aspect-ratio: 16 / 9;
-}
-.screen-accurate .portrait-sheen {
-  display: none;
-}
-
-/* Étoiles et Zone */
-.screen-accurate .boss-substats {
-  display: flex;
-  flex-direction: column;
-  border: none;
-  padding: 0;
-  margin-bottom: 24px;
-  gap: 12px;
-}
-.screen-accurate .substat-difficulty {
-  order: -1;
-}
-.screen-accurate .stars .star {
-  width: 38px;
-  height: 38px;
-  margin: 0 4px;
-}
-.screen-accurate .stars .star.filled svg {
-  fill: #b59865;
-  filter: drop-shadow(0 4px 4px rgba(0,0,0,0.6));
-}
-.screen-accurate .stars .star.empty svg {
-  stroke: #b59865;
-  stroke-width: 1px;
-  opacity: 0.4;
-}
-
-.screen-accurate .substat {
-  gap: 6px;
-}
-.screen-accurate .substat-label,
-.screen-accurate .substat-value {
-  font-size: 15px;
-  color: #e5dac3;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  font-family: var(--f-display);
-  font-weight: 400;
-}
-
-/* Les séparateurs */
-.screen-accurate .screen-divider {
-  height: 2px;
-  width: 100%;
-  background: linear-gradient(90deg, transparent, rgba(181, 152, 101, 0.7), transparent);
-  margin: 0 auto 20px;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.9);
-}
-
-.screen-accurate .ornament-divider { 
-  display: none; 
-}
-
-/* Description */
-.screen-accurate .boss-description {
-  font-family: var(--f-body);
-  font-size: 16px;
-  color: #c9bca6;
-  font-style: normal;
-  line-height: 1.5;
-  text-align: justify;
-  text-align-last: center;
-  max-width: 90%;
-  margin: 0 auto 20px;
-}
-
-/* Grille de statistiques */
-.screen-accurate .stat-grid {
-  margin-bottom: 20px;
-  gap: 10px;
-}
-.screen-accurate .stat-icon {
-  width: 22px;
-  height: 22px;
-  fill: #b59865;
-  margin-bottom: 4px;
-}
-.screen-accurate .stat-label {
-  font-size: 12px;
-  color: #b59865;
-  font-weight: 400;
-  letter-spacing: 0.05em;
-  margin-bottom: 4px;
-}
-.screen-accurate .stat-value {
-  font-size: 18px;
-  color: #e5dac3;
-  font-family: var(--f-display);
-  font-weight: 400;
-}
-
-/* Ornement décoratif du bas */
-.screen-accurate .bottom-ornament {
-  width: 100%;
-  height: 26px;
-  margin-top: 30px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 30' preserveAspectRatio='xMidYMid slice'%3E%3Cpath d='M0,15 Q20,0 40,15 T80,15 T120,15 T160,15 T200,15 T240,15 T280,15 T320,15 T360,15 T400,15' fill='none' stroke='%23b59865' stroke-width='2' opacity='0.7'/%3E%3Cpath d='M0,20 Q20,5 40,20 T80,20 T120,20 T160,20 T200,20 T240,20 T280,20 T320,20 T360,20 T400,20' fill='none' stroke='%23b59865' stroke-width='1' opacity='0.4'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-}
 
 /* ================================================================
    RESPONSIVE
