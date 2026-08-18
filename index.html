@@ -1,125 +1,114 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Parcours des Boss — Elden Ring</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Cinzel+Decorative:wght@700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parcours des Boss — Elden Ring</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="atmosphere" aria-hidden="true">
-  <div class="grain"></div>
-  <div class="vignette"></div>
-  <div class="fog fog-a"></div>
-  <div class="fog fog-b"></div>
-  <div class="ember-field" id="emberField"></div>
-</div>
+  <!-- Ambiance globale -->
+  <div class="atmosphere" aria-hidden="true">
+    <div class="grain"></div>
+    <div class="vignette"></div>
+  </div>
 
-<header class="site-header">
-  <span class="site-eyebrow">Elden Ring</span>
-  <h1 class="site-title">Parcours des Boss</h1>
-  <div class="header-rule" aria-hidden="true"><span></span><i>&#10022;</i><span></span></div>
-</header>
+  <main class="stage">
+    <div class="codex">
+      
+      <!-- CARTE DU BOSS (Style Smarag) -->
+      <div class="codex-inner smarag-style" id="codexInner">
+        
+        <!-- 1. Nom du Boss -->
+        <h2 class="boss-name" id="bossName">LE DRAGON DE GLINTSTONE SMARAG</h2>
 
-<main class="stage" id="stage">
-
-  <section class="codex" id="codex" aria-live="polite">
-    <div class="codex-frame">
-      <span class="corner corner-tl" aria-hidden="true"></span>
-      <span class="corner corner-tr" aria-hidden="true"></span>
-      <span class="corner corner-bl" aria-hidden="true"></span>
-      <span class="corner corner-br" aria-hidden="true"></span>
-
-      <div class="codex-inner" id="codexInner">
-
-        <div class="boss-topline">
-          <span class="chapter-tag" id="chapterTag">Chapitre I — N&eacute;crolimbe</span>
-          <span class="boss-number"><em>Boss</em> <b id="bossNumber">01</b><i>/50</i></span>
-        </div>
-
-        <h2 class="boss-name" id="bossName">&mdash;</h2>
-
+        <!-- 2. Image du Boss -->
         <div class="boss-portrait">
-          <div class="portrait-frame">
-            <img id="bossImage" src="images/bosses/placeholder.svg" alt="">
-            <div class="portrait-sheen" aria-hidden="true"></div>
-          </div>
+          <img id="bossImage" src="images/bosses/smarag.jpg" alt="">
         </div>
 
-        <div class="boss-substats">
-          <div class="substat">
-            <span class="substat-label">Zone</span>
-            <span class="substat-value" id="bossZone">&mdash;</span>
-          </div>
-          <div class="substat substat-difficulty">
-            <span class="substat-label">Difficult&eacute;</span>
-            <span class="stars" id="bossDifficulty" aria-label="Difficult&eacute;"></span>
-          </div>
+        <!-- 3. Étoiles -->
+        <div class="boss-stars" id="bossDifficulty">
+          <!-- Les étoiles seront injectées ici par JS -->
         </div>
 
-        <p class="boss-description" id="bossDescription">&nbsp;</p>
+        <!-- 4. Zone -->
+        <div class="boss-zone">
+          ZONE: <span id="bossZone">LAC DE LIURNIA</span>
+        </div>
 
-        <div class="ornament-divider" aria-hidden="true"><span></span><i>&#10022;</i><span></span></div>
+        <!-- Ligne séparatrice haute -->
+        <div class="smarag-divider"></div>
 
+        <!-- 5. Description -->
+        <p class="boss-description" id="bossDescription">
+          Dévorant les sorciers, il vit son corps être peu à peu corrompu par les pierres d'éclat de ses victimes. On rencontre Smarag près d'une île à l'ouest de l'Académie de Raya Lucaria, où il garde le cadavre d'un sorcier détenant la première clé de pierre d'éclat de l'académie.
+        </p>
+
+        <!-- Ligne séparatrice basse -->
+        <div class="smarag-divider"></div>
+
+        <!-- 6. Statistiques -->
         <div class="stat-grid">
           <div class="stat-block">
-            <svg class="stat-icon" viewBox="0 0 24 24"><path d="M12 21s-7.5-4.7-10.2-9.4C.2 8.6 1.4 5 5 4.2c2.2-.5 4.2.6 5.5 2.4C11.8 4.8 13.8 3.7 16 4.2c3.6.8 4.8 4.4 3.2 7.4C16.5 16.3 12 21 12 21z"/></svg>
-            <span class="stat-label">Point de Vie</span>
-            <span class="stat-value" id="statHp">&mdash;</span>
+            <!-- Icône Coeur -->
+            <svg class="stat-icon" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+            <span class="stat-label">POINT DE VIE</span>
+            <span class="stat-value" id="statHp">6069</span>
           </div>
           <div class="stat-block">
-            <svg class="stat-icon" viewBox="0 0 24 24"><path d="M12 2 4 5v6c0 5 3.4 8.9 8 11 4.6-2.1 8-6 8-11V5l-8-3z"/></svg>
-            <span class="stat-label">D&eacute;fense</span>
-            <span class="stat-value" id="statDef">&mdash;</span>
+            <!-- Icône Bouclier -->
+            <svg class="stat-icon" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+            <span class="stat-label">DÉFENSE</span>
+            <span class="stat-value" id="statDef">113</span>
           </div>
           <div class="stat-block">
-            <svg class="stat-icon" viewBox="0 0 24 24"><path d="m12 2 2.6 6.2L21 9l-5 4.5L17.5 21 12 17.3 6.5 21 8 13.5 3 9l6.4-.8z"/></svg>
-            <span class="stat-label">Point Faible</span>
-            <span class="stat-value" id="statWeak">&mdash;</span>
+            <!-- Icône Éclat/Point faible -->
+            <svg class="stat-icon" viewBox="0 0 24 24"><path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z"/></svg>
+            <span class="stat-label">POINT FAIBLE</span>
+            <span class="stat-value" id="statWeak">???</span>
           </div>
         </div>
 
-        <div class="stat-line">
-          <span><span class="stat-line-label">R&eacute;sistances</span><span id="statResist">&mdash;</span></span>
-          <span><span class="stat-line-label">R&eacute;compenses</span><span id="statRewards">&mdash;</span></span>
+        <!-- Éléments masqués requis par le script JS -->
+        <div style="display:none;">
+          <span id="chapterTag"></span>
+          <span id="bossNumber"></span>
+          <span id="statResist"></span>
+          <span id="statRewards"></span>
         </div>
+
+        <!-- Ornement floral de bas de page -->
+        <div class="bottom-floral"></div>
 
       </div>
+
+      <!-- Navigation -->
+      <nav class="boss-nav" aria-label="Navigation des Boss">
+        <button class="nav-btn" id="prevBtn"><span class="nav-arrow">◄</span></button>
+        <div class="progress-wrap">
+          <span class="progress-text" id="progressText">BOSS 01 / 12</span>
+          <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+        </div>
+        <button class="nav-btn" id="nextBtn"><span class="nav-arrow">►</span></button>
+      </nav>
+
     </div>
+  </main>
 
-    <nav class="boss-nav" aria-label="Navigation entre les boss">
-      <button type="button" class="nav-btn nav-prev" id="prevBtn">
-        <span class="nav-arrow">&larr;</span><span class="nav-label">Boss pr&eacute;c&eacute;dent</span>
-      </button>
-
-      <div class="progress-wrap">
-        <span class="progress-text" id="progressText">BOSS 01 / 50</span>
-        <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
-      </div>
-
-      <button type="button" class="nav-btn nav-next" id="nextBtn">
-        <span class="nav-label">Boss suivant</span><span class="nav-arrow">&rarr;</span>
-      </button>
-    </nav>
-  </section>
-
-</main>
-
-<a class="admin-link" href="admin/index.html">Administration</a>
-
-<div class="chapter-veil" id="chapterVeil" aria-hidden="true">
-  <div class="chapter-veil-inner">
-    <span class="cv-eyebrow" id="cvEyebrow">Chapitre II</span>
-    <h2 class="cv-title" id="cvTitle">Liurnia</h2>
-    <span class="cv-sub" id="cvSub">Des Lacs</span>
-    <div class="cv-rule"><span></span><i>&#10022;</i><span></span></div>
+  <!-- Voile de transition -->
+  <div class="chapter-veil" id="chapterVeil" aria-hidden="true">
+    <div class="chapter-veil-inner">
+      <span class="cv-eyebrow" id="cvEyebrow">Chapitre</span>
+      <h2 class="cv-title" id="cvTitle">Zone</h2>
+      <span class="cv-sub" id="cvSub"></span>
+    </div>
   </div>
-</div>
 
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
