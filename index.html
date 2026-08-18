@@ -34,11 +34,10 @@
       <span class="corner corner-bl" aria-hidden="true"></span>
       <span class="corner corner-br" aria-hidden="true"></span>
 
-      <!-- Structure mise à jour pour correspondre au screen -->
-      <div class="codex-inner screen-accurate" id="codexInner">
+      <div class="codex-inner" id="codexInner">
 
-        <div class="boss-topline" style="display: none;">
-          <span class="chapter-tag" id="chapterTag">Chapitre I — Nécrolimbe</span>
+        <div class="boss-topline">
+          <span class="chapter-tag" id="chapterTag">Chapitre I — N&eacute;crolimbe</span>
           <span class="boss-number"><em>Boss</em> <b id="bossNumber">01</b><i>/50</i></span>
         </div>
 
@@ -47,56 +46,54 @@
         <div class="boss-portrait">
           <div class="portrait-frame">
             <img id="bossImage" src="images/bosses/placeholder.svg" alt="">
+            <div class="portrait-sheen" aria-hidden="true"></div>
           </div>
         </div>
 
         <div class="boss-substats">
-          <div class="substat substat-difficulty">
-            <span class="substat-label" style="display: none;">Difficulté</span>
-            <span class="stars" id="bossDifficulty" aria-label="Difficulté"></span>
-          </div>
           <div class="substat">
-            <span class="substat-label">ZONE:</span>
+            <span class="substat-label">Zone</span>
             <span class="substat-value" id="bossZone">&mdash;</span>
+          </div>
+          <div class="substat substat-difficulty">
+            <span class="substat-label">Difficult&eacute;</span>
+            <span class="stars" id="bossDifficulty" aria-label="Difficult&eacute;"></span>
           </div>
         </div>
 
-        <div class="screen-divider" aria-hidden="true"></div>
-
         <p class="boss-description" id="bossDescription">&nbsp;</p>
 
-        <div class="screen-divider" aria-hidden="true"></div>
+        <div class="ornament-divider" aria-hidden="true"><span></span><i>&#10022;</i><span></span></div>
 
         <div class="stat-grid">
           <div class="stat-block">
-            <svg class="stat-icon" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-            <span class="stat-label">POINT DE VIE</span>
+            <svg class="stat-icon" viewBox="0 0 24 24"><path d="M12 21s-7.5-4.7-10.2-9.4C.2 8.6 1.4 5 5 4.2c2.2-.5 4.2.6 5.5 2.4C11.8 4.8 13.8 3.7 16 4.2c3.6.8 4.8 4.4 3.2 7.4C16.5 16.3 12 21 12 21z"/></svg>
+            <span class="stat-label">Point de Vie</span>
             <span class="stat-value" id="statHp">&mdash;</span>
           </div>
           <div class="stat-block">
-            <svg class="stat-icon" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
-            <span class="stat-label">DÉFENSE</span>
+            <svg class="stat-icon" viewBox="0 0 24 24"><path d="M12 2 4 5v6c0 5 3.4 8.9 8 11 4.6-2.1 8-6 8-11V5l-8-3z"/></svg>
+            <span class="stat-label">D&eacute;fense</span>
             <span class="stat-value" id="statDef">&mdash;</span>
           </div>
           <div class="stat-block">
-            <svg class="stat-icon" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-            <span class="stat-label">POINT FAIBLE</span>
+            <svg class="stat-icon" viewBox="0 0 24 24"><path d="m12 2 2.6 6.2L21 9l-5 4.5L17.5 21 12 17.3 6.5 21 8 13.5 3 9l6.4-.8z"/></svg>
+            <span class="stat-label">Point Faible</span>
             <span class="stat-value" id="statWeak">&mdash;</span>
           </div>
         </div>
 
-        <div class="stat-line" style="display: none;">
-          <span><span class="stat-line-label">Résistances</span><span id="statResist">&mdash;</span></span>
-          <span><span class="stat-line-label">Récompenses</span><span id="statRewards">&mdash;</span></span>
+        <div class="stat-line">
+          <span><span class="stat-line-label">R&eacute;sistances</span><span id="statResist">&mdash;</span></span>
+          <span><span class="stat-line-label">R&eacute;compenses</span><span id="statRewards">&mdash;</span></span>
         </div>
 
-        <div class="bottom-ornament"></div>
       </div>
     </div>
 
     <nav class="boss-nav" aria-label="Navigation entre les boss">
       <button type="button" class="nav-btn nav-prev" id="prevBtn">
-        <span class="nav-arrow">&larr;</span><span class="nav-label">Boss précédent</span>
+        <span class="nav-arrow">&larr;</span><span class="nav-label">Boss pr&eacute;c&eacute;dent</span>
       </button>
 
       <div class="progress-wrap">
