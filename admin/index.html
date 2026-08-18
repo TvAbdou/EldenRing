@@ -29,11 +29,11 @@
 </section>
 
 <p class="admin-hint">
-  Les modifications sont enregistrées dans ce navigateur. Pour les rendre définitives, cliquez sur <b>« Exporter bosses.json »</b> et remplacez le fichier <code>data/bosses.json</code> de votre projet.
+  Les modifications sont enregistrées dans ce navigateur. Glissez les lignes du tableau pour réordonner les boss. Pour les rendre définitives, cliquez sur <b>« Exporter bosses.json »</b>.
 </p>
 
 <main id="listView" class="list-view">
-  <!-- Barre de filtres et recherche -->
+  <!-- Filtres et Recherche -->
   <div class="filters-bar">
     <input type="text" id="searchInput" placeholder="Rechercher par nom ou zone...">
     <select id="filterChapter">
@@ -46,10 +46,39 @@
     <button type="button" id="addBossBtn" class="tbtn tbtn-primary">+ Nouveau Boss</button>
   </div>
 
+  <!-- Barre d'actions en lot (apparaît quand des cases sont cochées) -->
+  <div class="bulk-bar" id="bulkBar" hidden>
+    <span id="bulkCount">0 boss sélectionné(s)</span>
+    <div class="bulk-controls">
+      <select id="bulkChapterSelect">
+        <option value="">Changer de chapitre...</option>
+      </select>
+      <select id="bulkDifficultySelect">
+        <option value="">Changer la difficulté...</option>
+        <option value="1">Difficulté 1</option>
+        <option value="2">Difficulté 2</option>
+        <option value="3">Difficulté 3</option>
+        <option value="4">Difficulté 4</option>
+        <option value="5">Difficulté 5</option>
+      </select>
+      <button type="button" id="applyBulkBtn" class="tbtn tbtn-primary">Appliquer</button>
+      <button type="button" id="deleteBulkBtn" class="tbtn tbtn-danger">Supprimer la sélection</button>
+    </div>
+  </div>
+
   <div class="table-responsive">
     <table class="boss-table" id="bossTable">
       <thead>
-        <tr><th>#</th><th>Nom</th><th>Chapitre</th><th>Zone</th><th></th></tr>
+        <tr>
+          <th style="width: 30px;"><input type="checkbox" id="selectAll"></th>
+          <th style="width: 40px;"></th>
+          <th>#</th>
+          <th>Nom</th>
+          <th>Catégories</th>
+          <th>Chapitre</th>
+          <th>Zone</th>
+          <th></th>
+        </tr>
       </thead>
       <tbody id="bossTableBody"></tbody>
     </table>
@@ -83,8 +112,19 @@
       </div>
 
       <div class="field">
-        <label for="f_difficulty" title="De 1 (très facile) à 5 (cauchemardesque)">Difficulté (1 à 5)</label>
+        <label for="f_difficulty">Difficulté (1 à 5)</label>
         <input type="number" id="f_difficulty" min="1" max="5">
+      </div>
+
+      <!-- Tags & Catégories -->
+      <div class="field field-span2">
+        <label>Catégories / Tags</label>
+        <div class="tags-selector">
+          <label class="tag-checkbox"><input type="checkbox" value="Histoire Principale" name="f_tags"> Histoire Principale</label>
+          <label class="tag-checkbox"><input type="checkbox" value="Majeur (Remembrance)" name="f_tags"> Majeur (Remembrance)</label>
+          <label class="tag-checkbox"><input type="checkbox" value="Optionnel" name="f_tags"> Optionnel</label>
+          <label class="tag-checkbox"><input type="checkbox" value="DLC" name="f_tags"> DLC (Shadow of the Erdtree)</label>
+        </div>
       </div>
 
       <div class="field field-span2">
@@ -137,9 +177,7 @@
     </div>
 
     <div class="form-actions">
-      <!-- Bouton de suppression aligné à gauche -->
       <button type="button" id="deleteBossBtn" class="tbtn tbtn-danger" style="margin-right: auto;">Supprimer ce boss</button>
-      
       <span class="save-feedback" id="saveFeedback"></span>
       <button type="submit" class="tbtn tbtn-primary">Enregistrer</button>
     </div>
