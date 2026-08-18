@@ -2,7 +2,7 @@
   "use strict";
 
   var DATA_URL = "data/bosses.json";
-  var OVERRIDES_KEY = "err_admin_overrides_v1"; // shared with /admin/admin.js
+  var OVERRIDES_KEY = "err_admin_overrides_v1";
 
   var els = {
     codexInner: document.getElementById("codexInner"),
