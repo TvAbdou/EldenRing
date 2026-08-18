@@ -2,7 +2,7 @@
   "use strict";
 
   var DATA_URL = "../data/bosses.json";
-  var OVERRIDES_KEY = "err_admin_overrides_v1"; // shared with ../script.js
+  var OVERRIDES_KEY = "err_admin_overrides_v1";
 
   var els = {
     statusNote: document.getElementById("statusNote"),
@@ -37,8 +37,8 @@
   };
 
   var chapters = [];
-  var baseBosses = []; // raw data from bosses.json, unmerged
-  var bosses = []; // merged (base + overrides), sorted by number
+  var baseBosses = []; 
+  var bosses = []; 
   var editingId = null;
   var currentImageValue = "";
 
@@ -68,7 +68,7 @@
   }
 
   function setStatus(msg) {
-    els.statusNote.textContent = msg;
+    els.statusNote.innerHTML = "<strong>Statut :</strong> " + msg;
   }
 
   function populateChapterSelect() {
@@ -215,12 +215,17 @@
   function onImageFileSelected(e) {
     var file = e.target.files && e.target.files[0];
     if (!file) return;
+    
+    // Ajout d'une gestion d'erreur au cas où la lecture échoue
     var reader = new FileReader();
     reader.onload = function () {
       currentImageValue = reader.result;
       setPreview(currentImageValue);
       els.f_imagePath.value = "";
       els.f_imagePath.placeholder = "(image t\u00e9l\u00e9vers\u00e9e en m\u00e9moire)";
+    };
+    reader.onerror = function() {
+      alert("Erreur lors de la lecture de l'image. Veuillez r\u00e9essayer avec un autre format.");
     };
     reader.readAsDataURL(file);
   }
@@ -273,6 +278,8 @@
       }
     };
     reader.readAsText(file);
+    // Réinitialiser la valeur de l'input pour pouvoir importer le même fichier deux fois de suite si besoin
+    e.target.value = "";
   }
 
   function onReset() {
