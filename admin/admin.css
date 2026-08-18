@@ -21,8 +21,26 @@
 }
 
 body{
+  /* IMPORTANT : neutralise le display:flex/justify-content/align-items
+     hérité de style.css (prévu pour centrer UNE seule carte de boss).
+     Sans ce reset, tous les blocs de la page admin (header, toolbar,
+     hint, recherche, tableau) se retrouvent alignés en ligne au lieu
+     de s'empiler normalement — c'est ce qui cassait tout l'affichage. */
+  display: block;
+  min-height: 0;
   padding: 0 0 60px;
   background: var(--c-void);
+}
+
+.table-caption{
+  caption-side: top;
+  text-align: left;
+  font-family: var(--f-display);
+  font-size: 11px;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--c-parchment-2);
+  margin-bottom: 8px;
 }
 
 .admin-header{
